@@ -16,7 +16,7 @@
 }
 
 /* Shared element: product image morphs between pages */
-::view-transition-group(product-image) {
+::view-transition-group(*.product-image) {
   animation-duration: 0.35s;
   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -112,11 +112,8 @@ body {
   display: block;
   inline-size: 100%;
   height: auto;
+  view-transition-name: var(--vtn);
   view-transition-class: product-image;
-}
-
-.product-card.transitioning .product-image {
-  view-transition-name: product-image;
 }
 
 .product-info {
@@ -170,6 +167,8 @@ body {
   inline-size: 100%;
   height: auto;
   view-transition-name: product-image;
+  view-transition-name: var(--vtn);
+  view-transition-class: product-image;
 }
 
 .detail-info {
