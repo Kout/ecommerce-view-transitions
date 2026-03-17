@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Category – Wireframe Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a href="index.html" class="logo">Wireframe Store</a>
+    <nav>
+      <a href="index.html" class="nav-link active">Category</a>
+    </nav>
+  </header>
+
+  <main class="category-page">
+    <h1 class="page-title">All Products</h1>
+
+    <div class="product-grid">
+      <a href="product.html" class="product-card">
+        <img class="product-image" src="img/13831-400.webp" alt="Product One" width="400">
+        <div class="product-info">
+          <h2 class="product-name">Product One</h2>
+          <p class="product-price">$49.00</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card">
+        <img class="product-image" src="img/16925-27869-400.webp" alt="Product Two" width="400">
+        <div class="product-info">
+          <h2 class="product-name">Product Two</h2>
+          <p class="product-price">$79.00</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card">
+        <img class="product-image" src="img/17040-28349-400.webp" alt="Product Three" width="400">
+        <div class="product-info">
+          <h2 class="product-name">Product Three</h2>
+          <p class="product-price">$35.00</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card">
+        <img class="product-image" src="img/13831-400.webp" alt="Product Four" width="400">
+        <div class="product-info">
+          <h2 class="product-name">Product Four</h2>
+          <p class="product-price">$120.00</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card">
+        <img class="product-image" src="img/16925-27869-400.webp" alt="Product Five" width="400">
+        <div class="product-info">
+          <h2 class="product-name">Product Five</h2>
+          <p class="product-price">$65.00</p>
+        </div>
+      </a>
+
+      <a href="product.html" class="product-card">
+        <img class="product-image" src="img/17040-28349-400.webp" alt="Product Six" width="400">
+        <div class="product-info">
+          <h2 class="product-name">Product Six</h2>
+          <p class="product-price">$95.00</p>
+        </div>
+      </a>
+    </div>
+  </main>
+
+<script>
+  const cards = document.querySelectorAll('.product-card');
+
+  // On click: remember which card was clicked
+  cards.forEach((card, i) => {
+    card.addEventListener('click', () => {
+      sessionStorage.setItem('vt-card', i);
+      cards.forEach(c => c.classList.remove('transitioning'));
+      card.classList.add('transitioning');
+    });
+  });
+
+  // On back-navigation: restore the transitioning card before the snapshot
+  window.addEventListener('pagereveal', () => {
+    const idx = sessionStorage.getItem('vt-card');
+    if (idx !== null && cards[idx]) {
+      cards[idx].classList.add('transitioning');
+    }
+  });
+</script>
+</body>
+</html>
